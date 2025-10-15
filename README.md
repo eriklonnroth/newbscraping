@@ -1,6 +1,6 @@
-# Web Scraping for Newbs with Cursor AI
+# Newbscraping (AI-Assisted Web Scraping for Newbs)
 
-This repository provides a **guided, step-by-step process for web scraping using Cursor AI**, designed specifically for beginners with no prior web scraping experience.
+This repository provides a **guided, step-by-step process for web scraping using Cursor AI**, designed specifically for beginners with no prior web scraping or programming experience.
 
 ## Purpose
 
