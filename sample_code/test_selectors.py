@@ -37,7 +37,7 @@ def extract_fields(html_path: str, selectors: dict) -> dict:
 
 
 if __name__ == "__main__":
-    selectors = read_selectors("sample_scripts/selectors.txt")
+    selectors = read_selectors("sample_code/selectors.txt")
     data = extract_fields(
         "html_input/Bright Horizons nursery.html",
         selectors,

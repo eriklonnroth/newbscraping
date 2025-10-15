@@ -10,9 +10,9 @@ Whether you need to extract data from websites for research, business analysis, 
 
 ```
 webscraping/
-├── START_HERE.md          # Your main starting point - complete the questions here
-├── AI_Instructions.md     # Technical instructions for the AI assistant
-├── sample_scripts/        # Example scraping scripts for reference by the AI (don't touch)
+├── START_HERE.md         # Your main starting point - complete the questions here
+├── AI_Instructions.md    # Technical instructions for the AI assistant
+├── sample_code/          # Example code that the AI can reference
 ├── html_input/           # Place sample HTML files here
 ├── file_input/           # Place sample PDF/CSV files here
 └── csv_output/           # Your scraped data will be saved here as CSV files
