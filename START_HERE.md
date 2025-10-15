@@ -78,9 +78,9 @@ If you provided a URL above, save a copy of the HTML file of that page by naviga
 
 Ensure you have the following applications installed on your computer:
 
-- **Google Chrome** or equivalent browser
+- **Google Chrome** or equivalent browser such as Edge, Brave or Firefox (Safari is not supported)
 - **Python** (available on Microsoft Store or from python.org)
-- **Cursor** (avilable at cursor.com)
+- **Cursor** (avilable at cursor.com - create an account and start a free trial)
 
 ### Step 2: Install Python Extension
 

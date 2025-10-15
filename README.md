@@ -33,8 +33,8 @@ This file contains a simple questionnaire that will guide you through defining y
 
 ## What You'll Need
 
-- Google Chrome (or Edge, Firefox, Brave - Safari not supported)
-- Python 3 (can be installed via Microsoft Store if on Windows)
-- Cursor IDE with the Python extension, available at cursor.com
+- Google Chrome or Edge, Firefox, Brave - Safari not supported
+- Python 3, available from pythong.org or the Microsoft Store
+- Cursor IDE with the Python extension, available at cursor.com (new users get free trial of Pro)
 
 Everything else is handled automatically by the AI assistant!
