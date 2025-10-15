@@ -10,11 +10,11 @@ The user has provided details of the scrape they wish to undertake in `START_HER
 
 - **Platform:** Windows or Mac running a Chromium or Mozilla browser
 - **Commands:** Always use `python3` and `pip3` (python and pip may not be aliased)
-- **Virtual Environment:** Do not ask for the user's virtual environment - use full filepath references
+- **Virtual Environment:** Do not ask for the user's virtual environment - use full filepaths
 
 ### 📁 Reference Files
 
-Sample scripts of a nursery website scrape have been provided in `sample_scripts/`.
+Sample scripts have been provided in `sample_scripts/`.
 
 > **⚠️ Important:** Do not edit or alter these files, and do not add more files to this directory. Use them for reference only.
 
