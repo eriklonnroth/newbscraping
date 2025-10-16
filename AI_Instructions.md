@@ -99,7 +99,7 @@ Once all packages are installed, test whether we can extract the `<p>` element u
 Identify results-page selectors using the user-provided results HTML:
 
 - Open the results HTML file(s) in `html_input`
-- Identify robust selectors for: result item/container, title text, item URL, and any pagination/next-page control
+- Identify robust selectors for: result item/container, item title, item URL, and any pagination/next-page control
 - Prefer stable CSS or XPATH/Playwright selectors; avoid brittle `nth-child` references
 - Save the confirmed results selectors to `results_selectors.txt` (in project root, not in `sample_code`)
 
