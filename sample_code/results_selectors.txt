@@ -1,0 +1,6 @@
+result item: .sr
+result title: .sr a[data-gtm-button-type="Title"]
+result url: .sr a[data-gtm-button-type="Title"]::attr(href)
+result snippet: .sr .sr-desc p
+pagination next: nav.pagination a[aria-label="Go to the next page"], nav.pagination .pagination-end a[title*="next" i]
+result count check: .sr [data-gtm-order]

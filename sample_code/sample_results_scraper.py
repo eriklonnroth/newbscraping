@@ -41,10 +41,10 @@ def parse_results_on_page(page) -> Iterable[Tuple[str, str]]:
     # Each search result card appears under a container with class "sr"
     cards = page.query_selector_all(".sr")
     for card in cards:
-        link = card.query_selector("header a[title][href]")
+        link = card.query_selector("a[data-gtm-button-type='Title']")
         if not link:
             continue
-        title = (link.get_attribute("title") or link.inner_text()).strip()
+        title = link.inner_text().strip()
         href = link.get_attribute("href") or ""
         if not href:
             continue
