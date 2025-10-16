@@ -17,7 +17,7 @@ The user has provided details of the scrape they wish to undertake in `START_HER
 
 Sample code has been provided in `sample_code/`.
 
-> **⚠️ Important:** Do not edit or alter these files, and do not add more files to this directory. Use them for reference only.
+> **⚠️ Important:** You may edit scripts in the sample code directory for testing with real URLs, but otherwise keep newly generated scripts in the project root
 
 ---
 
@@ -93,8 +93,8 @@ Once all packages are installed, test whether we can extract the `<p>` element u
 - **🚀 Launch** a headful browser:
   - **Mac:** `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --remote-debugging-port=9222 --user-data-dir="/tmp/chrome-debug"`
   - **Windows:** `"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\temp\chrome-debug"`
-- **🔧 Update** the placeholder URL in `template_browser_scraper.py` with the `EXAMPLE_DETAILS_PAGE_URL`
-- **▶️ Run** `python3 template_browser_scraper.py`
+  - **🔧 Update** the placeholder URL in `browser_test_scraper.py` with the `RESULTS_PAGE_2_URL`
+- **▶️ Run** `python3 browser_test_scraper.py`
 - **✅ Success Check:** If this successfully retrieves the first `<p>` element then we know the scrape worked
 - **🆘 Troubleshooting:** If it fails, ask the user if they noticed anything in particular on the screen, such as a Captcha or error message. Proceed to troubleshoot with the user's help
 - **⚠️ Important:** Do not under any circumstances install other Playwright browsers, Selenium or anything else
@@ -106,18 +106,19 @@ Identify results-page selectors using the user-provided results HTML:
 
 - Open the results HTML file(s) in `html_input`
 - Identify robust selectors for: result item/container, item title, item URL, and any pagination/next-page control
-- Prefer stable CSS or XPATH/Playwright selectors; avoid brittle `nth-child` references
+- Prefer stable CSS or XPATH/Playwright selectors; avoid brittle nth-child references
 - Save the confirmed results selectors to `results_selectors.txt` (in project root, not in `sample_code`)
 
 **Step 13: Fieldname Selectors (Details HTML)**
 Identify details-page selectors for each required field:
 
 - Open the details HTML file(s) in `html_input`
-- Identify robust selectors for each field the user wants to capture (see `START_HERE.md`), locating the field value in the details page HTML by grepping words/patterns
-- Prefer stable CSS or XPATH/Playwright selectors; avoid brittle `nth-child` references
+- Identify robust selectors for each field the user wants to capture (see `START_HERE.md`), locating the field value in the details page HTML by grepping key words, special characters or numeric patterns from the fieldname
+- Prefer stable CSS or XPATH/Playwright selectors; avoid brittle nth-child references
+- Ask the user to take paste screenshot of the webpage if you struggle to find a selector after many attempts
 - Save the confirmed fieldname selectors to `fieldname_selectors.txt` (in project root, not in `sample_code`)
 
-- **Missing data handling:** If any required selector cannot be identified from the provided HTML, alert the user
+- **Missing data handling:** If a required fieldname selector cannot be identified from the provided HTML, alert the user
 
 ### **Phase V: Main Scraping Implementation**
 
@@ -125,7 +126,7 @@ Identify details-page selectors for each required field:
 Continuing with the approach that has been confirmed to work (either BeautifulSoup or headful browser), create a script based on the sample provided that does the following:
 
 - **🔗 Construct** a set of relevant search URLs from the search criteria specified by the user in `START_HERE.md`
-- **🎯 Locate** the appropriate selectors for search results by referring to the user-provided results HTML file
+- **🎯 Locate** the appropriate selectors from results_selectors.txt, inserting a 2-second sleep on each page if using Playwright in order for JavaScript to load
 - **📄 Start** on the first results page and save items to a CSV file within `csv_output` containing relevant headers (at minimum: item title, item URL, results page URL)
 - **💾 Pagination Handling:** If results are paginated, save to CSV between each page search instead of storing everything in memory, in case the script fails partway
 - **⏱️ Browser Delays:** If using the headful browser approach, open new pages within the same tab and insert a 2-second sleep on each page to allow for JavaScript loading
@@ -135,8 +136,7 @@ Continuing with the approach that has been confirmed to work (either BeautifulSo
 **Step 15: Details Page Script**
 Once all results pages have been saved to CSV, create a script to process each item based on the sample provided that does the following:
 
-- **🔗 Open** each item URL in turn and look for the appropriate selectors
-- **🔄 Adapt Selectors:** If using Playwright, these may need to be adapted somewhat from what was saved in `selectors.txt`
+- **🔗 Open** each item URL in turn and look for the appropriate selectors from fieldname_selectors.txt
 - **📊 Scrape** the relevant fields as specified and save the results to a CSV file within `csv_output` with relevant headers for each field
 - **💾 Append Data:** Append data to the file after each item page rather than just storing in memory, in case the script fails partway
 - **📁 File Management:** Avoid proliferation of CSVs by appending all records to one CSV
