@@ -1,6 +1,6 @@
 # 🎯 Web Scraping Setup Guide
 
-> **Note:** This document assumes you are using Google Chrome but most browsers other than Safari will work, including Edge, Firefox, Brave, etc. If using a Mac, use the Command key (⌘) instead of Ctrl for any keyboard shortcuts mentioned below.
+> **Note:** For browser-based scraping, most popular browsers other than Safari will work fine, including Edge, Firefox, Brave, etc. If using a Mac, use the Command key (⌘) instead of Ctrl for any keyboard shortcuts mentioned below.
 
 ---
 
@@ -17,7 +17,7 @@ Type your answers to each question below (placeholders have been provided). Thes
 **What browser are you running (Chrome, Edge, Brave, etc)?**  
 _Note: Safari is not supported._
 
-    Chrome
+    Edge
 
 ### 2. Scraping Target
 
@@ -38,7 +38,7 @@ For at least one of your searches, paste the full URL of page 2 of the results b
     RESULTS_PAGE_2_URL: https://www.daynurseries.co.uk/day_nursery_search_results.cfm/searchcounty/London/startpage/2
 
 **3c. Download HTML File**  
-If you provided a URL above, save a copy of the HTML file of that page by navigating to it in Chrome and hitting `Ctrl + S`. Give the file a recognisable name, e.g. "Nursery results page 2.html". Place the downloaded HTML file into the `html_input` folder in the left sidebar on Cursor (you can drag and drop it there from Windows File Explorer).
+If you provided a URL above, save a copy of the HTML file of that page by navigating to it in Chrome and hitting `Ctrl + S` (choose HTML only to exclude unnecessary files). Give the file a recognisable name, e.g. "Nursery results page 2.html". Place the downloaded HTML file into the `html_input` folder in the left sidebar on Cursor (you can drag and drop it there from Windows File Explorer).
 
 ### 4. Details Pages (if applicable)
 
@@ -48,7 +48,7 @@ Does this scrape require you to click on individual results to bring up more det
     EXAMPLE_DETAILS_PAGE_URL: https://www.daynurseries.co.uk/daynursery.cfm/searchazref/65432253422
 
 **4b. Download Details HTML**  
-If you provided a URL above, save a copy of the HTML file of that page by navigating to it in Chrome and hitting `Ctrl + S`. Give it a recognisable name, e.g. "details.html". Place the downloaded HTML file into the `html_input` folder in the left sidebar on Cursor (you can drag and drop it there from Windows File Explorer). If not, skip this question.
+If you provided a URL above, save a copy of the HTML file of that page by navigating to it in Chrome and hitting `Ctrl + S` (choose HTML only to exclude unnecessary files). Give it a recognisable name, e.g. "details.html". Place the downloaded HTML file into the `html_input` folder in the left sidebar on Cursor (you can drag and drop it there from Windows File Explorer). If not, skip this question.
 
 ### 5. File Downloads (if applicable)
 
