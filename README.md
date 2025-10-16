@@ -27,9 +27,18 @@ webscraping/
 
 ## Getting Started
 
-**👉 Check out `START_HERE.md` to begin your web scraping journey!**
+### Download or Clone the Project
 
-This file contains a simple questionnaire that will guide you through defining your scraping requirements. Once you've completed it, Cursor AI will take over and create the necessary scripts to extract your data.
+- **If you use git**: Clone the repository and open it in Cursor.
+
+```bash
+git clone https://github.com/eriklonnroth/newbscraping.git
+cd newbscraping
+```
+
+Then in Cursor, use File > Open Folder to select the `newbscraping` folder you just cloned.
+
+- **If you don't know about git**: Click the green "Code" button on GitHub, choose "Download ZIP", unzip it on your computer, then in Cursor use File > Open Folder and select the unzipped `newbscraping` folder.
 
 ## What You'll Need
 
@@ -38,3 +47,7 @@ This file contains a simple questionnaire that will guide you through defining y
 - Cursor IDE with the Python extension, available at cursor.com (new users get free trial of Pro)
 
 Everything else is handled automatically by the AI assistant!
+
+**👉 Check out `START_HERE.md` to begin your web scraping journey!**
+
+That file contains a simple questionnaire that will guide you through defining your scraping requirements. Once you've completed it, Cursor AI will take over and create the necessary scripts to extract your data.
