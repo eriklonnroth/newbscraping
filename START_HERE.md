@@ -1,6 +1,6 @@
 # 🎯 Web Scraping Setup Guide
 
-> **Note:** For browser-based scraping, most popular browsers other than Safari will work fine, including Edge, Firefox, Brave, etc. If using a Mac, use the Command key (⌘) instead of Ctrl for any keyboard shortcuts mentioned below.
+> **Note:** For browser-based scraping, most popular browsers other than Safari and Edge will work fine, including Chrome, Firefox, Brave, etc. If using a Mac, use the Command key (⌘) instead of Ctrl for any keyboard shortcuts mentioned below.
 
 ---
 
@@ -15,7 +15,7 @@ Type your answers to each question below (placeholders have been provided). Thes
     Windows
 
 **What browser are you running (Chrome, Edge, Brave, etc)?**  
-_Note: Safari is not supported._
+_Note: Safari and Edge are not supported._
 
     Edge
 
@@ -78,7 +78,7 @@ If you provided a URL above, save a copy of the HTML file of that page by naviga
 
 Ensure you have the following applications installed on your computer:
 
-- **Google Chrome** or equivalent browser such as Edge, Brave or Firefox (Safari is not supported)
+- **Google Chrome, Firefox or Brave** (Safari and Edge are not supported)
 - **Python** (available on Microsoft Store or from python.org)
 - **Cursor** (avilable at cursor.com - create an account and start a free trial)
 

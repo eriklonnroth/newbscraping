@@ -44,7 +44,7 @@ Then in Cursor, use File > Open Folder to select the `newbscraping` folder you j
 
 ## What You'll Need
 
-- Google Chrome or Edge, Firefox, Brave - Safari not supported
+- Google Chrome, Firefox, or Brave - Safari and Edge not supported
 - Python 3, available from pythong.org or the Microsoft Store
 - Cursor IDE with the Python extension, available at cursor.com (new users get free trial of Pro)
 
