@@ -54,16 +54,9 @@ Sample code has been provided in `sample_code/`.
 - If BeautifulSoup, lxml or requests are missing, install them using `pip3 install beautifulsoup4 lxml requests`
 - Otherwise proceed to the next step
 
-**Step 6: BeautifulSoup Test**
-
-- Create a test script to check whether you can extract the values from your selectors text file using BeautifulSoup
-- Run the script and report the extracted values to the user
-- Ask them to confirm whether everything looks correct
-- **⏳ Await response**
-
 ### **Phase III: Scraping Method Testing**
 
-**Step 7: BeautifulSoup Approach Test**
+**Step 6: BeautifulSoup Approach Test**
 Test whether we can conduct the actual scrape using BeautifulSoup or whether a headful browser approach is needed:
 
 - **🔧 Update** the placeholder URL in `template_simple_scraper.py` with the `EXAMPLE_DETAILS_PAGE_URL` provided by the user
@@ -71,22 +64,22 @@ Test whether we can conduct the actual scrape using BeautifulSoup or whether a h
 - **✅ Success Check:** If BeautifulSoup managed to retrieve a value that matches the first `<p>` from our html input, then we know the scrape worked
 - **📢 Explain** to the user that our test scrape succeeded and proceed to building the real scripts (Step 14)
 
-**Step 8: Browser Approach Decision**
+**Step 7: Browser Approach Decision**
 
 - If BeautifulSoup results in an error or if the retrieved `<p>` element contains text such as "We believe you may be a bot", then we know that HTTP requests will not work and we will need to try a headful browser
 
-**Step 9: Advanced Package Installation**
+**Step 8: Advanced Package Installation**
 
 - Explain to the user that you need to install more packages, and that this might take a few minutes
 - Run `pip3 install -r requirements.txt`
 
-**Step 10: Browser Installation**
+**Step 9: Browser Installation**
 
 - If Playwright is among the recently installed packages, alert the user that you need to install a Playwright browser and that this might take a few minutes
 - Select a browser that aligns with the user's existing browser as provided in `START_HERE.md` (most likely Chromium)
 - Run `playwright install chromium` (without npx) or another browser as appropriate to match the one indicated in START_HERE.md
 
-**Step 11: Browser Testing**
+**Step 10: Browser Testing**
 Once all packages are installed, test whether we can extract the `<p>` element using Playwright:
 
 - **📢 Inform** the user that we will need to conduct the scrape through a browser, then ask them to quit Chrome entirely - end your message with "Have you closed all browser windows on your computer?"
@@ -107,15 +100,15 @@ Identify results-page selectors using the user-provided results HTML:
 
 - Open the results HTML file(s) in `html_input`
 - Identify robust selectors for: result item/container, title text, item URL, and any pagination/next-page control
-- Prefer stable CSS or XPATH selectors; avoid brittle `nth-child` references
+- Prefer stable CSS or XPATH/Playwright selectors; avoid brittle `nth-child` references
 - Save the confirmed results selectors to `results_selectors.txt` (in project root, not in `sample_code`)
 
 **Step 13: Fieldname Selectors (Details HTML)**
 Identify details-page selectors for each required field:
 
-- For each field the user wants to capture (see question 6 of `START_HERE.md`), locate the field value in the details page HTML by grepping likely words/patterns
-- Note a stable CSS or XPATH selector for each field value
-- Avoid brittle `nth-child` references; use XPATH where appropriate
+- Open the details HTML file(s) in `html_input`
+- Identify robust selectors for each field the user wants to capture (see `START_HERE.md`), locating the field value in the details page HTML by grepping words/patterns
+- Prefer stable CSS or XPATH/Playwright selectors; avoid brittle `nth-child` references
 - Save the confirmed fieldname selectors to `fieldname_selectors.txt` (in project root, not in `sample_code`)
 
 - **Missing data handling:** If any required selector cannot be identified from the provided HTML, alert the user
