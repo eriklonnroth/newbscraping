@@ -16,7 +16,7 @@ import os
 
 
 # NOTE TO AI: Before running this script, ask the user for the target URL from example.com to an actual URL if not already changed:
-URL = "https://www.daynurseries.co.uk/daynursery.cfm/searchazref/65432253422"
+URL = # URL from START_HERE.md here
 
 
 def scrape_page(url, cdp_url="http://localhost:9222"):

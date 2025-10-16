@@ -14,10 +14,10 @@ Type your answers to each question below (placeholders have been provided). Thes
 
     Windows
 
-**What browser are you running (Chrome, Edge, Brave, etc)?**  
+**What browser are you running (Chrome, Brave, Firefox etc)?**  
 _Note: Safari and Edge are not supported._
 
-    Edge
+    Chrome
 
 ### 2. Scraping Target
 
@@ -28,7 +28,7 @@ _Note: Safari and Edge are not supported._
 ### 3. Search Configuration
 
 **3a. Search Criteria**  
-If this scrape requires a search step, describe the search criteria in plain English below. e.g. "Search for day nurseries in a 10 mile radius of postcodes W1B 2AE, B1 1AY, and LS1 1DN." The specified criteria must be available in the website's search interface. If the list of records is obtained browsing a structured directory instead of a search form, then describe the browsing criteria instead ("e.g. all nurseries in London"). If you only wish to limit the number of results to be scraped, include the page range below as well (e.g. "first 10 pages" or "first 100 results").
+If this scrape requires a search step, describe the search criteria in plain English below. e.g. "Search for day nurseries in a 10 mile radius of postcodes W1B 2AE, B1 1AY, and LS1 1DN." The specified criteria must be available in the website's search interface. If the list of records is obtained browsing a structured directory instead of a search form, then describe the browsing criteria instead ("e.g. nurseries across all London boroughs"). If you wish to limit the number of results to be scraped, include the page range below as well (e.g. "first 10 pages" or "first 100 results").
 
     SEARCH_CRITERIA: The first 50 nurseries listed for each of London and Birmingham
 

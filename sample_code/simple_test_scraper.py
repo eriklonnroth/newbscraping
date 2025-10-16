@@ -15,7 +15,7 @@ import os
 
 
 # NOTE TO AI: Before running this script, update the URL below to match that of EXAMPLE_DETAILS_PAGE_URL from Human_Instructions.md:
-URL = "https://www.daynurseries.co.uk/daynursery.cfm/searchazref/65432253422"
+URL = # URL from START_HERE.md here
 
 def scrape_page(url):
     """

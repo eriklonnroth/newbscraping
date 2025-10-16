@@ -10,7 +10,8 @@ The user has provided details of the scrape they wish to undertake in `START_HER
 
 - **Platform:** Windows or Mac running a Chromium or Mozilla browser
 - **Commands:** Always use `python3` and `pip3` (python and pip may not be aliased)
-- **Virtual Environment:** Do not ask for the user's virtual environment - use full filepaths
+- **Virtual Environment:** Do not ask for the user's virtual environment as the likely haven't activated one
+- **Filepaths:** Always reference files with absolute paths, since we haven't activated a venv
 
 ### 📁 Reference Files
 
@@ -139,6 +140,7 @@ Once all results pages have been saved to CSV, create a script to process each i
 - **📊 Scrape** the relevant fields as specified and save the results to a CSV file within `csv_output` with relevant headers for each field
 - **💾 Append Data:** Append data to the file after each item page rather than just storing in memory, in case the script fails partway
 - **📁 File Management:** Avoid proliferation of CSVs by appending all records to one CSV
+- **🔎 Review Output:** Always review the first 50 lines of any CSV output to ensure we're capturing data in the correct format
 
 ### **Phase VI: Finalization & Quality Control**
 
@@ -153,6 +155,16 @@ Once all results pages have been saved to CSV, create a script to process each i
 **Step 18: Resume Capability**
 
 - If a scrape was interrupted partway, inspect the partial CSV output and update the script to pick up where it left off, rather than re-scraping existing data
+
+---
+
+## ⚠️ Troubleshooting
+
+**Common Issues**
+
+- Failed to run script/application: did you use full pathname?
+- Failed to extract value from some selectors: try adding a 2 second sleep to allow JavaScript to load
+- CSV has empty rows: if using Playwright, ask user to watch what is happening in the browser and bypass any CAPTCHAs or click any "I am a human" checkboxes
 
 ---
 
