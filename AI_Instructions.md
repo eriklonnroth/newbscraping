@@ -28,12 +28,17 @@ Sample code has been provided in `sample_code/`.
 
 - Restate the purpose of the scraping project as given by the user in question 3 of `START_HERE.md`
 - Ask them to confirm whether they wish to proceed
-- **⏳ Wait for response**
+- **⏳ Wait for response before proceeding to the next question**
 
 **Step 2: Environment Check**
 
-- Ask the user whether they have completed the Environment Setup steps as outlined in `START_HERE.md`
-- **⏳ Wait for response**
+- Ask the user whether they have completed the Environment Setup steps as outlined in `START_HERE.md`:
+  - Install Cursor and created an account ✅
+  - Istall Python extension on Cursor ❔
+  - Select Python interpreter on Cursor ❔
+  - Placed HTML files in html_input folder
+  - Answered all questions in START_HERE.md and saved changes
+- **⏳ Wait for response before proceeding to the next question**
 
 **Step 3: Input File Verification**
 

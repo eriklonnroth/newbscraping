@@ -6,6 +6,8 @@ This repository provides a **guided, step-by-step process for web scraping using
 
 Whether you need to extract data from websites for research, business analysis, or personal projects, this repository will walk you through the entire process using Cursor's AI assistant. No coding knowledge required - the AI will handle all the technical aspects while you provide the requirements.
 
+The webscraper is designed to work with websites that lists search results. It will go over each result and extract your desired data. It is not designed for open-ended desk research across multiple websites (try using a tool like ChatGPT Deep Research for that).
+
 ## Repository Structure
 
 ```
