@@ -11,7 +11,7 @@ The webscraper is designed to work with websites that lists search results. It w
 ## Repository Structure
 
 ```
-webscraping/
+newbscraping/
 ├── START_HERE.md         # Your main starting point - complete the questions here
 ├── AI_Instructions.md    # Technical instructions for the AI assistant
 ├── sample_code/          # Example code that the AI can reference
