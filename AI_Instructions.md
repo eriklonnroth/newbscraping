@@ -107,7 +107,9 @@ Identify results-page selectors using the user-provided results HTML:
 - Open the results HTML file(s) in `html_input`
 - Identify robust selectors for: result item/container, item title, item URL, and any pagination/next-page control
 - Prefer stable CSS or XPATH/Playwright selectors; avoid brittle nth-child references
-- Save the confirmed results selectors to `results_selectors.txt` (in project root, not in `sample_code`)
+- Save the fieldnames and your best guess selector to `results_fields_draft.json` (in project root, not in `sample_code`)
+- For each item in the json, run the extraction on the saved HTML and print the resulting text value to output and ask for the user's feedback on whether it is as they expected. Do this for one field at a time, not all at once.
+- If the user confirms that a field and its selector works, save them to a file called `results_fields_validated.json`
 
 **Step 13: Fieldname Selectors (Details HTML)**
 Identify details-page selectors for each required field:
@@ -115,10 +117,11 @@ Identify details-page selectors for each required field:
 - Open the details HTML file(s) in `html_input`
 - Identify robust selectors for each field the user wants to capture (see `START_HERE.md`), locating the field value in the details page HTML by grepping key words, special characters or numeric patterns from the fieldname
 - Prefer stable CSS or XPATH/Playwright selectors; avoid brittle nth-child references
-- Ask the user to take paste screenshot of the webpage if you struggle to find a selector after many attempts
-- Save the confirmed fieldname selectors to `fieldname_selectors.txt` (in project root, not in `sample_code`)
+- Save the fieldnames and your best guess selector to `details_fields_draft.json` (in project root, not in `sample_code`)
+- For each item in the json, run the extraction on the saved HTML and print the resulting text value to output and ask for the user's feedback on whether it is as they expected. Do this for one field at a time, not all at once.
+- If the user confirms that a field and its selector works, save them to a file called `details_fields_validated.json`
 
-- **Missing data handling:** If a required fieldname selector cannot be identified from the provided HTML, alert the user
+- **Missing data handling:** If a required fieldname selector cannot be identified from the provided HTML, alert the user. Treat the search for appropriate selectors as a collaborative exercise where you ask clarifying questions of the user, rather than making a lot of assumptions.
 
 ### **Phase V: Main Scraping Implementation**
 
@@ -126,7 +129,7 @@ Identify details-page selectors for each required field:
 Continuing with the approach that has been confirmed to work (either BeautifulSoup or headful browser), create a script based on the sample provided that does the following:
 
 - **🔗 Construct** a set of relevant search URLs from the search criteria specified by the user in `START_HERE.md`
-- **🎯 Locate** the appropriate selectors from results_selectors.txt, inserting a 2-second sleep on each page if using Playwright in order for JavaScript to load
+- **🎯 Locate** the appropriate selectors from `results_fields_validated.json`, inserting a 2-second sleep on each page if using Playwright in order for JavaScript to load
 - **📄 Start** on the first results page and save items to a CSV file within `csv_output` containing relevant headers (at minimum: item title, item URL, results page URL)
 - **💾 Pagination Handling:** If results are paginated, save to CSV between each page search instead of storing everything in memory, in case the script fails partway
 - **⏱️ Browser Delays:** If using the headful browser approach, open new pages within the same tab and insert a 2-second sleep on each page to allow for JavaScript loading
