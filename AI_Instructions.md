@@ -139,7 +139,7 @@ Continuing with the approach that has been confirmed to work (either BeautifulSo
 **Step 15: Details Page Script**
 Once all results pages have been saved to CSV, create a script to process each item based on the sample provided that does the following:
 
-- **🔗 Open** each item URL in turn and look for the appropriate selectors from fieldname_selectors.txt
+- **🔗 Open** each item URL in turn and look for the appropriate selectors from `details_fields_validated.json`
 - **📊 Scrape** the relevant fields as specified and save the results to a CSV file within `csv_output` with relevant headers for each field
 - **💾 Append Data:** Append data to the file after each item page rather than just storing in memory, in case the script fails partway
 - **📁 File Management:** Avoid proliferation of CSVs by appending all records to one CSV
