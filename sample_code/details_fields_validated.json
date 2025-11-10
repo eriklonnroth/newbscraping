@@ -1,0 +1,10 @@
+[
+  { "field": "School Name", "selector": "h1" },
+  { "field": "Location", "selector": "li.postcard__attr.postcard-fact--location" },
+  { "field": "Address", "selector": "address.profile__address--compact" },
+  { "field": "Website", "selector": ".fact-with-icon--website a.profile__website__link" },
+  { "field": "Grade Range", "selector": "ul.postcard__attrs > li.postcard__attr:has-text(\"-\")" },
+  { "field": "Number of Students", "selector": "section:has(h2:has-text(\"Students\")) .MuiTypography-displaySmall span" },
+  { "field": "Student:Teacher Ratio", "selector": "div.scalar:has-text(\"Student-Teacher Ratio\") > .MuiBox-root + .MuiBox-root .MuiTypography-displaySmall span" },
+  { "field": "Average SAT", "selector": "div.scalar--compact:has-text(\"Average SAT\") .MuiStack-root .MuiTypography-bodyMedium" },
+]

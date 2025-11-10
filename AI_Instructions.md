@@ -110,6 +110,7 @@ Identify results-page selectors using the user-provided results HTML:
 - Save the fieldnames and your best guess selector to `results_fields_draft.json` (in project root, not in `sample_code`)
 - For each item in the json, run the extraction on the saved HTML and print the resulting text value to output and ask for the user's feedback on whether it is as they expected. Do this for one field at a time, not all at once.
 - If the user confirms that a field and its selector works, save them to a file called `results_fields_validated.json`
+- Note that we are only concerned with the list items and their URLs at this stage, not the underlying data fields which will come from the details pages (next section). So don't skip ahead at this stage - focus only on results page extraction of list items.
 
 **Step 13: Fieldname Selectors (Details HTML)**
 Identify details-page selectors for each required field:
