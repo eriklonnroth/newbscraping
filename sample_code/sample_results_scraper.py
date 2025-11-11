@@ -7,10 +7,11 @@ Headful search results scraper using Chrome DevTools Protocol (CDP)
 - Columns: area, title, item_url, results_page_url
 """
 
-from playwright.sync_api import sync_playwright
 import csv
+import json
 import os
 from typing import Iterable, Tuple
+from playwright.sync_api import sync_playwright
 
 
 AREAS = [
@@ -20,6 +21,7 @@ AREAS = [
 
 MAX_PER_AREA = 50
 OUTPUT = "csv_output/results.csv"
+SELECTORS_FILE = "results_fields_validated.json"
 
 
 def ensure_csv(path: str) -> None:
@@ -37,21 +39,32 @@ def append_rows(path: str, rows: Iterable[dict]) -> None:
             writer.writerow(row)
 
 
-def parse_results_on_page(page) -> Iterable[Tuple[str, str]]:
-    # Each search result card appears under a container with class "sr"
-    cards = page.query_selector_all(".sr")
+def load_selectors(path: str) -> dict:
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    required_keys = {"item_container", "item_title", "item_url"}
+    missing = required_keys.difference(data.keys())
+    if missing:
+        raise ValueError(f"Missing selector keys: {', '.join(sorted(missing))}")
+    return data
+
+
+def parse_results_on_page(page, selectors: dict) -> Iterable[Tuple[str, str]]:
+    cards = page.query_selector_all(selectors["item_container"])
     for card in cards:
-        link = card.query_selector("a[data-gtm-button-type='Title']")
+        link = card.query_selector(selectors["item_title"])
         if not link:
             continue
-        title = link.inner_text().strip()
-        href = link.get_attribute("href") or ""
+        title = (link.inner_text() or "").strip()
+        href_attr = selectors["item_url"]
+        href_node = card.query_selector(href_attr)
+        href = href_node.get_attribute("href") if href_node else ""
         if not href:
             continue
         yield title, href
 
 
-def scrape_area(context, area_name: str, url_template: str) -> int:
+def scrape_area(context, area_name: str, url_template: str, selectors: dict) -> int:
     collected = 0
     page_num = 1
     page = context.new_page()
@@ -61,7 +74,7 @@ def scrape_area(context, area_name: str, url_template: str) -> int:
             page.goto(url, wait_until="networkidle", timeout=30000)
             page.wait_for_timeout(2000)
 
-            items = list(parse_results_on_page(page))
+            items = list(parse_results_on_page(page, selectors))
             if not items:
                 break
 
@@ -88,6 +101,7 @@ def scrape_area(context, area_name: str, url_template: str) -> int:
 
 def main():
     ensure_csv(OUTPUT)
+    selectors = load_selectors(SELECTORS_FILE)
     with sync_playwright() as p:
         browser = p.chromium.connect_over_cdp("http://localhost:9222")
         if not browser.contexts:
@@ -98,7 +112,7 @@ def main():
         total = 0
         for area_name, url_template in AREAS:
             print(f"Scraping area: {area_name}")
-            count = scrape_area(context, area_name, url_template)
+            count = scrape_area(context, area_name, url_template, selectors)
             print(f"Collected {count} items for {area_name}")
             total += count
 

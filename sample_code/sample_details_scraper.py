@@ -15,7 +15,7 @@ from typing import Dict, List, Set
 
 RESULTS_CSV = "csv_output/results.csv"
 DETAILS_CSV = "csv_output/details.csv"
-SELECTORS_FILE = "nursery_fields.txt"
+SELECTORS_FILE = "details_fields_validated.json"
 
 
 def read_selectors(path: str) -> Dict[str, str]:

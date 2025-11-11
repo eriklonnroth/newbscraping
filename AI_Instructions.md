@@ -38,7 +38,7 @@ Sample code has been provided in `sample_code/`.
   - Istall Python extension on Cursor ❔
   - Select Python interpreter on Cursor ❔
   - Placed HTML files in html_input folder
-  - Answered all questions in START_HERE.md and saved changes
+  - Answered all questions in `START_HERE.md` and saved changes
 - **⏳ Wait for response before proceeding to the next question**
 
 **Step 3: Input File Verification**
@@ -65,39 +65,36 @@ Sample code has been provided in `sample_code/`.
 **Step 6: BeautifulSoup Approach Test**
 Test whether we can conduct the actual scrape using BeautifulSoup or whether a headful browser approach is needed:
 
-- **🔧 Update** the placeholder URL in `template_simple_scraper.py` with the `EXAMPLE_DETAILS_PAGE_URL` provided by the user
-- **▶️ Run** `python3 template_simple_scraper.py`
-- **✅ Success Check:** If BeautifulSoup managed to retrieve a value that matches the first `<p>` from our html input, then we know the scrape worked
-- **📢 Explain** to the user that our test scrape succeeded and proceed to building the real scripts (Step 14)
+- **▶️ Run** `python3 first_p_test.py <EXAMPLE_DETAILS_PAGE_URL>` using the example details page URL provided by the user in `START_HERE.md`.
+- **✅ Success Check:** If the script managed to retrieve a value for p that looks like real website data, then we know the site isn't blocking BS4. If it returns nothing or an error message such as "We think you're a bot" then BS4 won't work and we'll need to use a headful browser approach instead.
 
-**Step 7: Browser Approach Decision**
+**Step 7: Headless vs Headful Approach Decision**
 
-- If BeautifulSoup results in an error or if the retrieved `<p>` element contains text such as "We believe you may be a bot", then we know that HTTP requests will not work and we will need to try a headful browser
+- **📢 Explain** to the user which scraping approach you recommend based on the first_p_test.py result, and ask them to confirm they agree before proceeding.
 
 **Step 8: Advanced Package Installation**
 
-- Explain to the user that you need to install more packages, and that this might take a few minutes
+- If the decision was made to proceed with a headful browser, explain to the user that you need to install more packages, and that this might take a few minutes
 - Run `pip3 install -r requirements.txt`
 
 **Step 9: Browser Installation**
 
 - If Playwright is among the recently installed packages, alert the user that you need to install a Playwright browser and that this might take a few minutes
-- Select a browser that aligns with the user's existing browser as provided in `START_HERE.md` (most likely Chromium)
-- Run `playwright install chromium` (without npx) or another browser as appropriate to match the one indicated in START_HERE.md
+- Select a browser that aligns with the user's existing browser as provided in `START_HERE.md`
+- Run `playwright install chromium` (without npx) as appropriate to match the one indicated in START_HERE.md
 
 **Step 10: Browser Testing**
-Once all packages are installed, test whether we can extract the `<p>` element using Playwright:
+Once all Playwright requirements are installed, it's time to implement
 
 - **📢 Inform** the user that we will need to conduct the scrape through a browser, then ask them to quit Chrome entirely - end your message with "Have you closed all browser windows on your computer?"
 - **⏳ Wait** for user confirmation that the browser is no longer running
 - **🚀 Launch** a headful browser:
   - **Mac:** `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --remote-debugging-port=9222 --user-data-dir="/tmp/chrome-debug"`
   - **Windows:** `"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\temp\chrome-debug"`
-  - **🔧 Update** the placeholder URL in `browser_test_scraper.py` with the `RESULTS_PAGE_2_URL`
-- **▶️ Run** `python3 browser_test_scraper.py`
+- **▶️ Run** `python3 browser_test_scraper.py <RESULTS_PAGE_2_URL` with the URL provided by the user in `START_HERE.md`
 - **✅ Success Check:** If this successfully retrieves the first `<p>` element then we know the scrape worked
 - **🆘 Troubleshooting:** If it fails, ask the user if they noticed anything in particular on the screen, such as a Captcha or error message. Proceed to troubleshoot with the user's help
-- **⚠️ Important:** Do not under any circumstances install other Playwright browsers, Selenium or anything else
+- **⚠️ Important:** Only use Playwright. Do not install Selenium or any other browser.
 
 ### **Phase IV: Field Analysis & Selector Creation**
 
@@ -119,7 +116,7 @@ Identify details-page selectors for each required field:
 - Identify robust selectors for each field the user wants to capture (see `START_HERE.md`), locating the field value in the details page HTML by grepping key words, special characters or numeric patterns from the fieldname
 - Prefer stable CSS or XPATH/Playwright selectors; avoid brittle nth-child references
 - Save the fieldnames and your best guess selector to `details_fields_draft.json` (in project root, not in `sample_code`)
-- For each item in the json, run the extraction on the saved HTML and print the resulting text value to output and ask for the user's feedback on whether it is as they expected. Do this for one field at a time, not all at once.
+- For each item in the json, try to extract a value from the saved details HTML and print the result to output. Ask for the user's feedback on whether it is as they expected. Do this for one field at a time, not all at once.
 - If the user confirms that a field and its selector works, save them to a file called `details_fields_validated.json`
 
 - **Missing data handling:** If a required fieldname selector cannot be identified from the provided HTML, alert the user. Treat the search for appropriate selectors as a collaborative exercise where you ask clarifying questions of the user, rather than making a lot of assumptions.
@@ -127,9 +124,9 @@ Identify details-page selectors for each required field:
 ### **Phase V: Main Scraping Implementation**
 
 **Step 14: Search Results Script**
-Continuing with the approach that has been confirmed to work (either BeautifulSoup or headful browser), create a script based on the sample provided that does the following:
+Continuing with the approach that has been confirmed to work (either BeautifulSoup or headful browser), create a script based on `sample_results_scraper.py` that does the following:
 
-- **🔗 Construct** a set of relevant search URLs from the search criteria specified by the user in `START_HERE.md`
+- **🔗 Construct** a set of relevant search URLs from the search criteria specified by the user in `START_HERE.md`. Save these to a json if there is a long list of them, or keep it in memory if it's a fairly simple list of 3 or fewer search URLs in total.
 - **🎯 Locate** the appropriate selectors from `results_fields_validated.json`, inserting a 2-second sleep on each page if using Playwright in order for JavaScript to load
 - **📄 Start** on the first results page and save items to a CSV file within `csv_output` containing relevant headers (at minimum: item title, item URL, results page URL)
 - **💾 Pagination Handling:** If results are paginated, save to CSV between each page search instead of storing everything in memory, in case the script fails partway
@@ -138,7 +135,7 @@ Continuing with the approach that has been confirmed to work (either BeautifulSo
 - **📁 File Management:** Avoid a proliferation of CSV files by keeping everything in a single results CSV
 
 **Step 15: Details Page Script**
-Once all results pages have been saved to CSV, create a script to process each item based on the sample provided that does the following:
+Once all results pages have been saved to CSV, create a script based on `sample_details_scraper.py` that loops through all the result item URLS and does the following:
 
 - **🔗 Open** each item URL in turn and look for the appropriate selectors from `details_fields_validated.json`
 - **📊 Scrape** the relevant fields as specified and save the results to a CSV file within `csv_output` with relevant headers for each field
