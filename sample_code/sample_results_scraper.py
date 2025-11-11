@@ -42,7 +42,7 @@ def append_rows(path: str, rows: Iterable[dict]) -> None:
 def load_selectors(path: str) -> dict:
     with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
-    required_keys = {"item_container", "item_title", "item_url"}
+    required_keys = {"item_selector", "item_title", "item_url"}
     missing = required_keys.difference(data.keys())
     if missing:
         raise ValueError(f"Missing selector keys: {', '.join(sorted(missing))}")
@@ -50,7 +50,7 @@ def load_selectors(path: str) -> dict:
 
 
 def parse_results_on_page(page, selectors: dict) -> Iterable[Tuple[str, str]]:
-    cards = page.query_selector_all(selectors["item_container"])
+    cards = page.query_selector_all(selectors["item_selector"])
     for card in cards:
         link = card.query_selector(selectors["item_title"])
         if not link:

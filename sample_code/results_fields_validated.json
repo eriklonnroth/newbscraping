@@ -1,5 +1,5 @@
 {
-  "item_container": "a.search-result__link",
+  "item_selector": "a.search-result__link",
   "item_title": "a.search-result__link h2",
   "item_url": "a.search-result__link[href]"
 }

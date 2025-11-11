@@ -6,5 +6,5 @@
   { "field": "Grade Range", "selector": "ul.postcard__attrs > li.postcard__attr:has-text(\"-\")" },
   { "field": "Number of Students", "selector": "section:has(h2:has-text(\"Students\")) .MuiTypography-displaySmall span" },
   { "field": "Student:Teacher Ratio", "selector": "div.scalar:has-text(\"Student-Teacher Ratio\") > .MuiBox-root + .MuiBox-root .MuiTypography-displaySmall span" },
-  { "field": "Average SAT", "selector": "div.scalar--compact:has-text(\"Average SAT\") .MuiStack-root .MuiTypography-bodyMedium" },
+  { "field": "Average SAT", "selector": "div.scalar--compact:has-text(\"Average SAT\") .MuiStack-root .MuiTypography-bodyMedium" }
 ]
