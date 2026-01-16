@@ -90,7 +90,7 @@ Once all Playwright requirements are installed, it's time to implement
 - **⏳ Wait** for user confirmation that the browser is no longer running
 - **🚀 Launch** a headful browser:
   - **Mac:** `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --remote-debugging-port=9222 --user-data-dir="/tmp/chrome-debug"`
-  - **Windows:** `"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\temp\chrome-debug"`
+  - **Windows with powershell:** `& "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\temp\chrome-debug"`
 - **▶️ Run** `python3 browser_test_scraper.py <RESULTS_PAGE_2_URL` with the URL provided by the user in `START_HERE.md`
 - **✅ Success Check:** If this successfully retrieves the first `<p>` element then we know the scrape worked
 - **🆘 Troubleshooting:** If it fails, ask the user if they noticed anything in particular on the screen, such as a Captcha or error message. Proceed to troubleshoot with the user's help
